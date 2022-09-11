@@ -41,6 +41,7 @@ const Chart = () => {
 
   // Create a new array of order status
   const array = [];
+  // map, filter, reduce - возвращают новый массив, можно сразу этим пользоваться без создания вспомогательного
   orders.map((item) => {
     const { orderStatus } = item;
     return array.push(orderStatus);
@@ -50,6 +51,7 @@ const Chart = () => {
     return arr.filter((n) => n === value).length;
   };
 
+  // нужно обсудить - не совсем понимаю что это и зачем
   const [q1, q2, q3, q4] = [
     "Order Placed...",
     "Processing...",

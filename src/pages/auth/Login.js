@@ -20,6 +20,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // есть ощущение, что урл точно можно вытащить из роутера и не хранить его в редаксе, но не уверен
   const previousURL = useSelector(selectPreviousURL);
   const navigate = useNavigate();
 
@@ -86,6 +87,7 @@ const Login = () => {
                 placeholder="Password"
                 required
                 value={password}
+                {/* это уже писал вроде, посмотри по всему проекту - насчет доп функции */}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button type="submit" className="--btn --btn-primary --btn-block">

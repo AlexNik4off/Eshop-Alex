@@ -12,6 +12,7 @@ import ProductList from "./productList/ProductList";
 import spinnerImg from "../../assets/spinner.jpg";
 import { FaCogs } from "react-icons/fa";
 
+// я бы назвал этот комопонент Products - все-таки у тебя здесь список
 const Product = () => {
   const { data, isLoading } = useFetchCollection("products");
   const [showFilter, setShowFilter] = useState(false);
@@ -38,6 +39,8 @@ const Product = () => {
 
   return (
     <section>
+      {/* для объединения классов воспользуйся какой-нибудь либой - например classnames или clsx, с ними удобнее
+      работать, чем с шаблонными строками */}
       <div className={`container ${styles.product}`}>
         <aside
           className={
@@ -57,6 +60,8 @@ const Product = () => {
           ) : (
             <ProductList products={products} />
           )}
+          {/* много где у тебя висят обработчики просто на дивах, во многих местах это должны быть кнопки, как в
+          данном случае */}
           <div className={styles.icon} onClick={toggleFilter}>
             <FaCogs size={20} color="orangered" />
             <p>

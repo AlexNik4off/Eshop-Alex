@@ -56,6 +56,8 @@ const ChangeOrderStatus = ({ order, id }) => {
                 <option value="" disabled>
                   -- Choose one --
                 </option>
+                {/* я бы value делал более простым, без троеточий и тд - чтобы value был как идентификатор статуса, а лейбл
+                 уже был бы с нужными подписями */}
                 <option value="Order Placed...">Order Placed...</option>
                 <option value="Processing...">Processing...</option>
                 <option value="Shipped...">Shipped...</option>

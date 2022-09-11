@@ -10,7 +10,10 @@ const Pagination = ({
   const pageNumbers = [];
   const totalPages = totalProducts / productsPerPage;
   // Limit the page Numbers shown
+  // если ты не меняешь это значение, зачем useState? Определи через обычную константу
   const [pageNumberLimit] = useState(5);
+  // camelCase
+  // этот момент с лимитом не очень понятен, зачем менять лимит? надо обсудить
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
@@ -48,12 +51,14 @@ const Pagination = ({
     <ul className={styles.pagination}>
       <li
         onClick={paginatePrev}
+        {/* почему styles.hidden в кавычках ? тебе же ccs-модуль вернет строку и так */}
         className={currentPage === pageNumbers[0] ? `${styles.hidden}` : null}
       >
         Prev
       </li>
 
       {pageNumbers.map((number) => {
+        // такие условия лучше выносить в говорящие переменные-флаги и использовать их - так читать сложно
         if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
           return (
             <li
@@ -70,6 +75,8 @@ const Pagination = ({
       <li
         onClick={paginateNext}
         className={
+          // если у тебя во второй ветке просто null можно использовать не тернарный оператор, а &&, будет короче и легче читать
+          // currentPage === pageNumbers[pageNumbers.length - 1] && styles.hidden
           currentPage === pageNumbers[pageNumbers.length - 1]
             ? `${styles.hidden}`
             : null

@@ -65,6 +65,8 @@ const ProductDetails = () => {
                 <p className={styles.price}>{`$${product.price}`}</p>
                 <p>{product.desc}</p>
                 <p>
+                  {/* еще я бы завел отдельный класс для жирного шрифта, а не использовал b, начертание b может отличаться
+                   у разных браузеров */}
                   <b>SKU</b> {product.id}
                 </p>
                 <p>

@@ -8,11 +8,14 @@ const Slider = () => {
   const slideLength = sliderData.length;
   //   console.log(slideLength);
 
+  // эти константы лучше большими буквам писать и вынести их из компонента, они не меняются
   const autoScroll = true;
   let slideInterval;
   let intervalTime = 5000;
 
+  // я бы назвал эти функции более говоряще - goToNextSlide и goToPrevSlide - чтобы было понятно, что это действие
   const nextSlide = () => {
+    // лучше текущий слайд брать из параметра коллбека, который ты можешь передать в setState
     setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
   };
 
@@ -20,6 +23,7 @@ const Slider = () => {
     setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
   };
 
+  // зачем этот эффект? при маунте компонента у тебя и так будет 0
   useEffect(() => {
     setCurrentSlide(0);
   }, []);
@@ -29,6 +33,7 @@ const Slider = () => {
   //   };
 
   useEffect(() => {
+    // slideInterval можно определить прямо тут, кроме этой функции, он больше нигде не нужен
     if (autoScroll) {
       const auto = () => {
         slideInterval = setInterval(nextSlide, intervalTime);
@@ -48,6 +53,7 @@ const Slider = () => {
         return (
           <div
             key={index}
+            {/* в таких случаях обычно заводят класс active и добавляют его при совпадении индексов */}
             className={index === currentSlide ? "slide current" : "slide"}
           >
             {index === currentSlide && (

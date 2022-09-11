@@ -42,6 +42,7 @@ const Orders = () => {
               <table>
                 <thead>
                   <tr>
+                    {/* заголовки таблицы тоже удобно собирать из массива, а не хардкодить в компоненте */}
                     <th>s/n</th>
                     <th>Date</th>
                     <th>Order ID</th>
@@ -65,6 +66,8 @@ const Orders = () => {
                           {orderDate} at {orderTime}
                         </td>
                         <td>{id}</td>
+                        {/* для форматирования валюты можно использовать встроенный механизм из JS - Intl.NumberFormat
+                        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat */}
                         <td>
                           {"$"}
                           {orderAmount}

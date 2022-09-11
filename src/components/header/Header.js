@@ -33,6 +33,7 @@ const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "");
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  // лучше соблюдать camelCase
   const [displayName, setdisplayName] = useState("");
   const [scrollPage, setScrollPage] = useState(false);
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
@@ -45,6 +46,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
+  // здесь не совсем понял - ты хочеть с помощью этой функции сделать фиксированный хедер?
   const fixNavbar = () => {
     if (window.scrollY > 50) {
       setScrollPage(true);
@@ -60,6 +62,7 @@ const Header = () => {
       if (user) {
         // console.log(user);
         if (user.displayName == null) {
+          // что такое u1?
           const u1 = user.email.slice(0, -10);
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
           setdisplayName(uName);
@@ -81,6 +84,7 @@ const Header = () => {
     });
   }, [dispatch, displayName]);
 
+  // если у тебя однострочные стрелочные функции, можно обойтись без фигурных скобок
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -100,6 +104,7 @@ const Header = () => {
       });
   };
 
+  // компоненты надо называть с большой буквы - может его вообще вынести в отдельный файл?
   const cart = (
     <span className={styles.cart}>
       <Link to="/cart">
@@ -118,24 +123,30 @@ const Header = () => {
 
           <nav
             className={
+              // насколько я помню, css-модули позволяют писать в camelCase стиле styles.showNav - так будет легче читать
+              // но если я ошибаюсь, всегда можно переименовать классы в camelCase)
               showMenu ? `${styles["show-nav"]}` : `${styles["hide-nav"]}`
             }
           >
             <div
               className={
+                // сложная логика, я бы вынес в отдельную переменную
                 showMenu
                   ? `${styles["nav-wrapper"]} ${styles["show-nav-wrapper"]}`
                   : `${styles["nav-wrapper"]}`
               }
               onClick={hideMenu}
+            {/*  пустой тег, можно сделать короткую запись <div {...props} /> */}
             ></div>
 
+            {/* здесь у тебя об*/}
             <ul onClick={hideMenu}>
               <li className={styles["logo-mobile"]}>
                 {logo}
                 <FaTimes size={22} color="#fff" onClick={hideMenu} />
               </li>
               <li>
+                {/* А эта ссылка всегда будет показываться? даже если юзер не админ? */}
                 <AdminOnlyLink>
                   <Link to="/admin/home">
                     <button className="--btn --btn-primary">Admin</button>
@@ -153,6 +164,7 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
+            {/* у тебя на многих блоках висит один и тот же обработчик hideMenu - может повесить его на общий контейнер один раз ?*/}
             <div className={styles["header-right"]} onClick={hideMenu}>
               <span className={styles.links}>
                 <ShowOnLogout>
