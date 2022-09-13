@@ -27,7 +27,7 @@ const OrderHistory = () => {
 
   return (
     <section>
-      <div className={`container ${styles.order}`}>
+      <div className={`container1 ${styles.order}`}>
         <h2>Your Order History</h2>
         <p>
           Open an order to leave a <b>Product Review</b>
