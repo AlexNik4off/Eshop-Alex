@@ -62,7 +62,7 @@ const Cart = () => {
 
   return (
     <section>
-      <div className={`container ${styles.table}`}>
+      <div className={`container1 ${styles.table}`}>
         <h2>Shopping Cart</h2>
         {cartItems.length === 0 ? (
           <>
