@@ -76,6 +76,8 @@ const cartSlice = createSlice({
     CLEAR_CART(state, action) {
       state.cartItems = [];
       toast.info(`Cart cleared`, {
+        // много где повторяется эта опция - можно либо вынести в переменную, либо посмотреть - возможно можно задать
+        // где-то дефолтные значения для всех тостов сразу
         position: "top-left",
       });
 
@@ -122,6 +124,8 @@ export const {
   SAVE_URL,
 } = cartSlice.actions;
 
+
+// вкусовщина, но мне кажется, что getCartItems короче, чем selectCartItems :)
 export const selectCartItems = (state) => state.cart.cartItems;
 export const selectCartTotalQuantity = (state) => state.cart.cartTotalQuantity;
 export const selectCartTotalAmount = (state) => state.cart.cartTotalAmount;

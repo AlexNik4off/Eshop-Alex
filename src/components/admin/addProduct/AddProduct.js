@@ -34,6 +34,8 @@ const initialState = {
 const AddProduct = () => {
   const { id } = useParams();
   const products = useSelector(selectProducts);
+  // почитай в документации редакса про нормализацию данных - https://redux.js.org/usage/structuring-reducers/normalizing-state-shape
+  // тут не критично, что ты ищешу по айдишнику в массиве, но если данных будет много, это может сказаться на перформансе
   const productEdit = products.find((item) => item.id === id);
   console.log(productEdit);
 
@@ -46,6 +48,9 @@ const AddProduct = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // у тебя некоторые функции определены как function, а некоторые как стрелочные, лучше, чтобы все было единообразно
+  // названия параметров f1 и f2 ни о чем не говорят)
+  // немного не понял финт с detectForm - зачем это?
   function detectForm(id, f1, f2) {
     if (id === "ADD") {
       return f1;
@@ -154,6 +159,8 @@ const AddProduct = () => {
               required
               name="name"
               value={product.name}
+              {/*В случае, если тебе для работы нужно только событие, можно опустить создание доп функции, а просто передать
+              ссылку на обработчик, событие как парамер автоматически прокинется в него*/}
               onChange={(e) => handleInputChange(e)}
             />
 
@@ -238,6 +245,7 @@ const AddProduct = () => {
               onChange={(e) => handleInputChange(e)}
               cols="30"
               rows="10"
+            {/*  пустой тег */}
             ></textarea>
 
             <button className="--btn --btn-primary">

@@ -37,6 +37,7 @@ const OrderDetails = () => {
             </p>
             <p>
               <b>Shipping Address</b>
+              {/* зачем br? если нужен переброс на другую строку, сделай это через div, читать такую разметку сложно */}
               <br />
               Address: {order.shippingAddress.line1},
               {order.shippingAddress.line2}, {order.shippingAddress.city}

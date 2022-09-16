@@ -52,6 +52,7 @@ const Reset = () => {
                 Reset Password
               </button>
               <div className={styles.links}>
+                {/* зачем ссылки обернуты в параграфы? ?*/}
                 <p>
                   <Link to="/login">- Login</Link>
                 </p>

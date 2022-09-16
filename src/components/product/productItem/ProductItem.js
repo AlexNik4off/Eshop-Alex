@@ -10,6 +10,9 @@ import styles from "./ProductItem.module.scss";
 
 const ProductItem = ({ product, grid, id, name, price, desc, imageURL }) => {
   const dispatch = useDispatch();
+  
+  // такие функции можно выносить из компонента в отдельные утилиты
+  // - например положить рядом файл utils и складывать там
   const shortenText = (text, n) => {
     if (text.length > n) {
       const shortenedText = text.substring(0, n).concat("...");

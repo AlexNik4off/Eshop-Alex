@@ -16,6 +16,7 @@ const AdminOnlyRoute = ({ children }) => {
         <p>This page can only be view by an Admin user.</p>
         <br />
         <Link to="/">
+          {/* уверен, что здесь нужна кнопка ? кажется, это должна быть просто ссылка на страницу назад */}
           <button className="--btn">&larr; Back To Home</button>
         </Link>
       </div>

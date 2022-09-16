@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 const Contact = () => {
   const form = useRef();
 
+  // в форме ты не только имейл отправляешь, я бы переименовал эту функцию в onSubmit
   const sendEmail = (e) => {
     e.preventDefault();
     console.log(form.current);
@@ -18,6 +19,7 @@ const Contact = () => {
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
         "template_7xyhwen",
         form.current,
+        // я так понимаю, что это какие-то токены? лучше их тоже в перемненые окржуения засунуть
         "user_hKs2aRfLoozcqA28UpUyz"
       )
       .then(
@@ -38,6 +40,8 @@ const Contact = () => {
         <div className={styles.section}>
           <form ref={form} onSubmit={sendEmail}>
             <Card cardClass={styles.card}>
+              {/* лучше завернуть инпуты внутрь лейбла, тогда при клике на лейбл будет фокус на инпут.
+               или связть их айдишниками*/}
               <label>Name</label>
               <input
                 type="text"
@@ -60,6 +64,7 @@ const Contact = () => {
                 required
               />
               <label>Message</label>
+              {/* пустой тег */}
               <textarea name="message" cols="30" rows="10"></textarea>
               <button className="--btn --btn-primary">Send Message</button>
             </Card>
@@ -70,6 +75,7 @@ const Contact = () => {
               <h3>Our Contact Information</h3>
               <p>Fill the form or contact us via other channels listed below</p>
               <div className={styles.icons}>
+                {/* почему это спаны ? а не дивы ?*/}
                 <span>
                   <FaPhoneAlt />
                   <p>+234 705 141 6545</p>

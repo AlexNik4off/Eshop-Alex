@@ -28,6 +28,7 @@ const authSlice = createSlice({
   },
 });
 
+// по канонам лучше функции называть в camelCase, а константы большими буквами
 export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
